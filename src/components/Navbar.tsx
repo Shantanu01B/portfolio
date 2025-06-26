@@ -17,6 +17,7 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [activeLink, setActiveLink] = useState('')
   const [hoveredLink, setHoveredLink] = useState('')
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -40,7 +41,7 @@ export default function Navbar() {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
-      className={`sticky top-0 z-50 flex items-center justify-between px-6 py-3 transition-all duration-300 ${
+      className={`sticky top-0 z-50 flex items-center justify-between px-4 sm:px-6 md:px-12 py-3 transition-all duration-300 ${
         scrolled ? 'bg-gray-900/95 backdrop-blur-md shadow-lg border-b border-gray-800/50' : 'bg-transparent'
       }`}
     >
@@ -58,6 +59,7 @@ export default function Navbar() {
         </Link>
       </motion.div>
 
+      {/* Desktop Nav */}
       <div className="hidden md:flex items-center gap-1">
         {navLinks.map(({name, color}) => {
           const lowerLink = name.toLowerCase()
@@ -99,11 +101,12 @@ export default function Navbar() {
         })}
       </div>
 
-      {/* Mobile menu button with enhanced gradient */}
+      {/* Mobile menu button */}
       <motion.button 
         className="md:hidden p-2 rounded-md group"
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
+        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
       >
         <div className="relative">
           <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24">
@@ -123,6 +126,34 @@ export default function Navbar() {
           />
         </div>
       </motion.button>
+
+      {/* Mobile Nav Menu */}
+      {isMobileMenuOpen && (
+        <motion.div
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -10 }}
+          className="absolute top-full left-0 w-full bg-gray-900 shadow-md flex flex-col items-start px-6 py-4 md:hidden z-40"
+        >
+          {navLinks.map(({ name, color }) => {
+            const lowerLink = name.toLowerCase()
+            return (
+              <a
+                key={name}
+                href={`#${lowerLink}`}
+                onClick={() => setIsMobileMenuOpen(false)}
+                className={`w-full py-2 text-sm font-medium transition-all duration-300 ${
+                  activeLink === lowerLink
+                    ? `text-transparent bg-gradient-to-r ${color} bg-clip-text`
+                    : 'text-gray-300 hover:text-white'
+                }`}
+              >
+                {name}
+              </a>
+            )
+          })}
+        </motion.div>
+      )}
     </motion.nav>
   )
 }

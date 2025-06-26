@@ -2,8 +2,18 @@
 
 import { motion } from 'framer-motion'
 import { FaLinkedin, FaGithub, FaEnvelope, FaPaperPlane } from 'react-icons/fa'
+import { useState } from 'react'
 
 export default function Contact() {
+  const [formData, setFormData] = useState({ name: '', email: '', message: '' })
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    alert('This form currently does not send an email. Integrate EmailJS or Formspree to enable sending.')
+    // Here you could integrate EmailJS, Formspree, or a backend API.
+    setFormData({ name: '', email: '', message: '' })
+  }
+
   return (
     <section
       id="contact"
@@ -28,13 +38,11 @@ export default function Contact() {
 
         <div className="flex flex-col lg:flex-row gap-12 items-center justify-center">
           <motion.form
+            onSubmit={handleSubmit}
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            action="mailto:your.email@example.com"
-            method="POST"
-            encType="text/plain"
             className="w-full max-w-xl bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg space-y-6 border border-gray-200 dark:border-gray-700"
           >
             <motion.div 
@@ -48,6 +56,8 @@ export default function Contact() {
                 type="text"
                 id="name"
                 name="name"
+                value={formData.name}
+                onChange={e => setFormData({ ...formData, name: e.target.value })}
                 placeholder="John Doe"
                 required
                 className="w-full p-3 rounded-lg bg-gray-50 dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-green-400 border border-gray-200 dark:border-gray-600 transition-all"
@@ -65,6 +75,8 @@ export default function Contact() {
                 type="email"
                 id="email"
                 name="email"
+                value={formData.email}
+                onChange={e => setFormData({ ...formData, email: e.target.value })}
                 placeholder="john@example.com"
                 required
                 className="w-full p-3 rounded-lg bg-gray-50 dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-400 border border-gray-200 dark:border-gray-600 transition-all"
@@ -82,6 +94,8 @@ export default function Contact() {
                 id="message"
                 name="message"
                 rows={5}
+                value={formData.message}
+                onChange={e => setFormData({ ...formData, message: e.target.value })}
                 placeholder="Hello, I'd like to talk about..."
                 required
                 className="w-full p-3 rounded-lg bg-gray-50 dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-400 border border-gray-200 dark:border-gray-600 transition-all"
@@ -89,9 +103,6 @@ export default function Contact() {
             </motion.div>
 
             <motion.button
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.5 }}
               type="submit"
               className="w-full py-3.5 px-6 rounded-lg bg-gradient-to-r from-green-400 to-blue-500 text-white font-semibold hover:shadow-lg hover:shadow-green-400/30 transition-all flex items-center justify-center gap-2"
               whileHover={{ scale: 1.02 }}
@@ -131,7 +142,7 @@ export default function Contact() {
                 {
                   icon: <FaEnvelope className="text-2xl text-red-500" />,
                   name: "Email",
-                  url: "shantanubarge2005@gmail.com",
+                  url: "mailto:shantanubarge2005@gmail.com",
                   text: "shantanubarge2005@gmail.com"
                 }
               ].map((item, index) => (
