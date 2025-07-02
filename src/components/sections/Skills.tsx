@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import {
   SiCplusplus,
   SiJavascript,
+  SiTypescript,
   SiPython,
   SiHtml5,
   SiCss3,
@@ -29,6 +30,7 @@ const categories = [
     skills: [
       { name: 'C++', icon: SiCplusplus, color: 'text-blue-500' },
       { name: 'JavaScript', icon: SiJavascript, color: 'text-yellow-400' },
+      { name: 'TypeScript', icon: SiTypescript, color: 'text-blue-600' },
       { name: 'Python', icon: SiPython, color: 'text-blue-400' }
     ]
   },
@@ -63,6 +65,7 @@ const categories = [
   {
     title: 'APIs & Auth',
     skills: [
+      { name: 'REST API', icon: SiPostman, color: 'text-orange-400' },
       { name: 'OpenAI', icon: SiOpenai, color: 'text-purple-500' },
       { name: 'Gemini AI', icon: SiOpenai, color: 'text-purple-400' },
       { name: 'JWT', icon: SiJsonwebtokens, color: 'text-pink-500' },
@@ -90,12 +93,9 @@ export default function Skills() {
       <div className="space-y-20">
         {categories.map((category, i) => (
           <div key={i} className="flex flex-col items-center justify-center">
-            {/* Centered Title */}
             <h3 className="text-xl font-semibold mb-8 text-center">
               {category.title}
             </h3>
-
-            {/* Centered Skill Grid */}
             <div className="flex flex-wrap justify-center gap-x-10 gap-y-10 max-w-5xl">
               {category.skills.map(({ name, icon: Icon, color }, index) => (
                 <motion.div

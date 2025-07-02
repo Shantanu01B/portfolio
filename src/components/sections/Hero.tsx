@@ -17,7 +17,7 @@ import { FiArrowRight } from 'react-icons/fi'
 const ROLES = [
   'Full Stack Developer',
   'MERN Specialist',
-  'AI Engineer',
+  'AI-Infused Web Application Developer',
   'Solutions Architect'
 ]
 
