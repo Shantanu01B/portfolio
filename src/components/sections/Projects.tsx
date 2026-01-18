@@ -8,8 +8,7 @@ const projects = [
 
   {
     title: 'RationX',
-    description:
-      'A smart ration distribution system enabling slot booking, secure verification, and transparent ration delivery.',
+    description:'A smart ration distribution system enabling slot booking, secure verification, and transparent ration delivery.',
     tech: ['MERN', 'JWT', 'QR Code', 'Role-Based Access', 'Tailwind'],
     image: '/projects/rationx.png',
     github: 'https://github.com/Shantanu01B/RationX',
@@ -26,11 +25,11 @@ const projects = [
   },
   {
     title: 'GigFlow',
-    description:
-      'A mini freelance marketplace where clients post gigs and freelancers bid with real-time updates.',
+    description:'A mini freelance marketplace where clients post gigs and freelancers bid with real-time updates.',
     tech: ['MERN', 'JWT', 'Socket.io', 'Tailwind'],
     image: '/projects/gigflow.png',
     github: 'https://github.com/Shantanu01B/gigflow',
+    demo:'https://gigflow-cyan.vercel.app',
   },
 
   {
