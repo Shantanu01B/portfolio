@@ -5,6 +5,17 @@ import Image from 'next/image'
 import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa'
 
 const projects = [
+
+  {
+    title: 'RationX',
+    description:
+      'A smart ration distribution system enabling slot booking, secure verification, and transparent ration delivery.',
+    tech: ['MERN', 'JWT', 'QR Code', 'Role-Based Access', 'Tailwind'],
+    image: '/projects/rationx.png',
+    github: 'https://github.com/Shantanu01B/RationX',
+    demo: 'https://ration-x.vercel.app/',
+  },
+
   {
     title: 'Farm2Home',
     description: 'A MERN stack portal enabling farmers to sell fresh produce directly to consumers.',
@@ -13,6 +24,15 @@ const projects = [
     github: 'https://github.com/Shantanu01B/farm2home-frontend',
     demo: 'https://farm2home-frontend-9krm.vercel.app',
   },
+  {
+    title: 'GigFlow',
+    description:
+      'A mini freelance marketplace where clients post gigs and freelancers bid with real-time updates.',
+    tech: ['MERN', 'JWT', 'Socket.io', 'Tailwind'],
+    image: '/projects/gigflow.png',
+    github: 'https://github.com/Shantanu01B/gigflow',
+  },
+
   {
     title: 'LawPal',
     description: 'AI-powered legal document & FIR generator using OpenAI/Gemini.',
@@ -45,14 +65,14 @@ const projects = [
     github: 'https://github.com/Shantanu01B/Campus-Connect',
     
   },
-  {
+  /*{
     title: 'Art Gallery',
     description: 'A modern and aesthetic website to showcase an online art/photo gallery with animations.',
     tech: ['React', 'Tailwind', 'Framer Motion'],
     image: '/projects/artgallery.png',
     github: 'https://github.com/Shantanu01B/Art-Gallery-Website',
     
-  }
+  }*/
 ]
 
 export default function Projects() {
